@@ -49,7 +49,13 @@ var UIController = (function(){
            newHtml = newHtml.replace('%description%', obj.desc);
              
            document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
-        }
+        },
+        clearFields: function(){
+            
+            var fields = document.querySelector('.form-control');
+            fields.value = '';
+            fields.focus();
+         }
     }
 
 })();
@@ -65,6 +71,7 @@ var Controller = (function(TodoCtrl, UICtrl){
         newItem = TodoApp.addItem(input.description)
 
         UICtrl.addListItem(newItem);
+        UICtrl.clearFields();
         
     }
     return{
